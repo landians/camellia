@@ -212,8 +212,14 @@ mod tests {
             .handle("/A/call", service_a)
             .handle("/B/call", service_b);
 
-        let _ = app.call(&mut service_a_cx, service_a_req);
+        let service_a_fut = app.call(&mut service_a_cx, service_a_req);
 
-        let _ = app.call(&mut service_b_cx, service_b_req);
+        let service_b_fut = app.call(&mut service_b_cx, service_b_req);
+
+        let rt = tokio::runtime::Runtime::new().unwrap();
+
+        rt.block_on(service_a_fut);
+
+        rt.block_on(service_b_fut);
     }
 }
