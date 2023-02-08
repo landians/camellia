@@ -1,8 +1,8 @@
 
 #[derive(Debug)]
 pub struct ServerContext {
-    service: String,
-    method: String,
+    pub service: String,
+    pub method: String,
 }
 
 impl ServerContext {
