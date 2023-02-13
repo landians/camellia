@@ -19,6 +19,8 @@ impl<T> Request<T> {
 }
 
 /// A RPC request builder.
+/// 
+/// Request::builder()
 #[derive(Default, Debug, Clone)]
 pub struct Builder {
     /// RPC request service.
